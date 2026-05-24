@@ -1,4 +1,4 @@
-import { signal } from '@preact/signals-react';
+import { signal, type Signal } from '@preact/signals-react';
 
 export interface Model {
   id: string;
@@ -13,12 +13,12 @@ export class ModelListCache {
   private _cache = signal<Record<string, ModelList>>({});
   private _customModel = signal<string>('');
 
-  get cache() {
-    return this._cache.value;
+  get cache(): Signal<Record<string, ModelList>> {
+    return this._cache;
   }
 
-  get customModel() {
-    return this._customModel.value;
+  get customModel(): Signal<string> {
+    return this._customModel;
   }
 
   setCustomModel(model: string): void {

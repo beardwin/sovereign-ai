@@ -1,11 +1,11 @@
 import * as SecureStore from 'expo-secure-store';
-import { signal } from '@preact/signals-react';
+import { signal, type Signal } from '@preact/signals-react';
 
 export class ApiKeyStore {
   private _keys = signal<Record<string, string>>({});
 
-  get keys() {
-    return this._keys.value;
+  get keys(): Signal<Record<string, string>> {
+    return this._keys;
   }
 
   async save(serverId: string, key: string): Promise<void> {

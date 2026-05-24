@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SplashScreen } from 'expo-router';
+import { SplashScreen, Slot } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { db } from '../src/db';
@@ -45,7 +45,6 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <KeyboardProvider>
-        {/* @ts-expect-error Expo Router handles _layout.tsx */}
         <Slot />
       </KeyboardProvider>
     </GestureHandlerRootView>

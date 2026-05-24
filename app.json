@@ -10,8 +10,12 @@
       "backgroundColor": "#F2F2F7",
       "resizeMode": "contain"
     },
+    "plugins": [
+      "./plugins/withNoPrecompiledExpoModules"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.beardwin.sovereign-ai-qwen3"
     },
     "android": {
       "adaptiveIcon": {

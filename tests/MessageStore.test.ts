@@ -11,15 +11,15 @@ describe('MessageStore', () => {
   });
 
   it('starts with empty messages list', () => {
-    expect(store.messages).toEqual([]);
+    expect(store.messages.value).toEqual([]);
   });
 
   it('starts with loading false', () => {
-    expect(store.loading).toBe(false);
+    expect(store.loading.value).toBe(false);
   });
 
   it('starts with no error', () => {
-    expect(store.error).toBeNull();
+    expect(store.error.value).toBeNull();
   });
 
   it('creates and retrieves a message', async () => {
@@ -36,7 +36,7 @@ describe('MessageStore', () => {
 
     const messages = await store.getByThreadId(threadId);
     expect(messages).toHaveLength(1);
-    expect(store.messages).toHaveLength(1);
+    expect(store.messages.value).toHaveLength(1);
   });
 
   it('orders messages by creation time', async () => {
@@ -70,6 +70,6 @@ describe('MessageStore', () => {
 
   it('clears error when clearError is called', () => {
     store.clearError();
-    expect(store.error).toBeNull();
+    expect(store.error.value).toBeNull();
   });
 });

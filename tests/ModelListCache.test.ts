@@ -9,7 +9,7 @@ describe('ModelListCache', () => {
   });
 
   it('starts with empty cache', () => {
-    expect(cache.cache).toEqual({});
+    expect(cache.cache.value).toEqual({});
   });
 
   it('returns empty array for uncached server', () => {
@@ -24,20 +24,20 @@ describe('ModelListCache', () => {
 
   it('can set custom model', () => {
     cache.setCustomModel('custom-model');
-    expect(cache.customModel).toBe('custom-model');
+    expect(cache.customModel.value).toBe('custom-model');
   });
 
   it('can clear cache for a server', () => {
     cache.setCachedModels('server-1', []);
     cache.clearCache('server-1');
-    expect(cache.cache).toEqual({});
+    expect(cache.cache.value).toEqual({});
   });
 
   it('can clear all cache', () => {
     cache.setCachedModels('server-1', []);
     cache.setCachedModels('server-2', []);
     cache.clearAll();
-    expect(cache.cache).toEqual({});
+    expect(cache.cache.value).toEqual({});
   });
 
   it('caches models per server independently', () => {
@@ -45,7 +45,7 @@ describe('ModelListCache', () => {
     cache.setCachedModels('server-2', [{ id: 'm2', object: 'model', created: 0, owned_by: 'b' }]);
     expect(cache.getCachedModels('server-1')).toHaveLength(1);
     expect(cache.getCachedModels('server-2')).toHaveLength(1);
-    expect(cache.cache['server-1']![0].id).toBe('m1');
-    expect(cache.cache['server-2']![0].id).toBe('m2');
+    expect(cache.cache.value['server-1']![0].id).toBe('m1');
+    expect(cache.cache.value['server-2']![0].id).toBe('m2');
   });
 });

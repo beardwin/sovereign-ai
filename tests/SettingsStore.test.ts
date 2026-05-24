@@ -10,7 +10,7 @@ describe('SettingsStore', () => {
   });
 
   it('starts with null settings', () => {
-    expect(store.settings).toBeNull();
+    expect(store.settings.value).toBeNull();
   });
 
   it('defaults to system theme when no settings loaded', () => {
@@ -25,8 +25,8 @@ describe('SettingsStore', () => {
   it('creates default settings on init', async () => {
     const result = await store.init();
     expect(result.theme).toBe('system');
-    expect(store.settings).not.toBeNull();
-    expect(store.settings!.id).toBe(1);
+    expect(store.settings.value).not.toBeNull();
+    expect(store.settings.value!.id).toBe(1);
   });
 
   it('does not duplicate settings on repeated init', async () => {
@@ -56,6 +56,6 @@ describe('SettingsStore', () => {
 
   it('clears error when clearError is called', () => {
     store.clearError();
-    expect(store.error).toBeNull();
+    expect(store.error.value).toBeNull();
   });
 });

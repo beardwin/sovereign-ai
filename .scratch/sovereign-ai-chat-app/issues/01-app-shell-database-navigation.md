@@ -1,4 +1,4 @@
-Status: completed
+Status: done
 
 # App shell, database, and navigation
 
@@ -26,13 +26,13 @@ Show a splash screen while the database initializes and stores instantiate. Tran
 
 ## Acceptance criteria
 
-- [ ] App launches with a splash screen, then transitions to the server list
-- [ ] Drizzle ORM schema is defined with all 4 tables (servers, threads, messages, settings)
-- [ ] Database opens on app initialization
-- [ ] All store classes are scaffolded (ServerStore, MessageStore, SettingsStore, ApiKeyStore, ModelListCache, AppState)
-- [ ] Expo Router navigation is set up with server list, server detail, chat, and settings screens
-- [ ] All screens render empty placeholder UI
-- [ ] Tests: store scaffolds pass unit tests (empty state assertions)
+- [x] App launches with a splash screen, then transitions to the server list
+- [x] Drizzle ORM schema is defined with all 4 tables (servers, threads, messages, settings)
+- [x] Database opens on app initialization
+- [x] All store classes are scaffolded (ServerStore, MessageStore, SettingsStore, ApiKeyStore, ModelListCache, AppState)
+- [x] Expo Router navigation is set up with server list, server detail, chat, and settings screens
+- [x] All screens render empty placeholder UI
+- [x] Tests: store scaffolds pass unit tests (empty state assertions)
 
 ## Blocked by
 

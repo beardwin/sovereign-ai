@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { signal } from '@preact/signals-react';
+import { signal, type Signal } from '@preact/signals-react';
 import type { Server, NewServer } from '../db/schema';
 import type { Database } from '../db';
 import { servers } from '../db/schema';
@@ -11,16 +11,16 @@ export class ServerStore {
 
   constructor(private readonly db: Database) {}
 
-  get servers() {
-    return this._servers.value;
+  get servers(): Signal<Server[]> {
+    return this._servers;
   }
 
-  get loading() {
-    return this._loading.value;
+  get loading(): Signal<boolean> {
+    return this._loading;
   }
 
-  get error() {
-    return this._error.value;
+  get error(): Signal<string | null> {
+    return this._error;
   }
 
   async getAll(): Promise<Server[]> {

@@ -1,6 +1,6 @@
 import type { Database } from '../db';
 import { eq, asc } from 'drizzle-orm';
-import { signal } from '@preact/signals-react';
+import { signal, type Signal } from '@preact/signals-react';
 import type { Message, NewMessage } from '../db/schema';
 import { messages } from '../db/schema';
 
@@ -11,16 +11,16 @@ export class MessageStore {
 
   constructor(private readonly db: Database) {}
 
-  get messages() {
-    return this._messages.value;
+  get messages(): Signal<Message[]> {
+    return this._messages;
   }
 
-  get loading() {
-    return this._loading.value;
+  get loading(): Signal<boolean> {
+    return this._loading;
   }
 
-  get error() {
-    return this._error.value;
+  get error(): Signal<string | null> {
+    return this._error;
   }
 
   async getByThreadId(threadId: string): Promise<Message[]> {

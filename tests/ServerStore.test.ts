@@ -11,15 +11,15 @@ describe('ServerStore', () => {
   });
 
   it('starts with empty servers list', () => {
-    expect(store.servers).toEqual([]);
+    expect(store.servers.value).toEqual([]);
   });
 
   it('starts with loading false', () => {
-    expect(store.loading).toBe(false);
+    expect(store.loading.value).toBe(false);
   });
 
   it('starts with no error', () => {
-    expect(store.error).toBeNull();
+    expect(store.error.value).toBeNull();
   });
 
   it('creates and retrieves a server', async () => {
@@ -29,7 +29,7 @@ describe('ServerStore', () => {
     expect(server.id).toBe(id);
     expect(server.url).toBe('http://localhost:11434');
     expect(server.api_key_id).toBe('key-1');
-    expect(store.servers).toHaveLength(1);
+    expect(store.servers.value).toHaveLength(1);
 
     const fetched = await store.getById(id);
     expect(fetched).not.toBeNull();
@@ -42,7 +42,7 @@ describe('ServerStore', () => {
 
     const servers = await store.getAll();
     expect(servers).toHaveLength(2);
-    expect(store.servers).toHaveLength(2);
+    expect(store.servers.value).toHaveLength(2);
   });
 
   it('updates a server', async () => {
@@ -61,11 +61,11 @@ describe('ServerStore', () => {
 
     const result = await store.getById(id);
     expect(result).toBeNull();
-    expect(store.servers).toHaveLength(0);
+    expect(store.servers.value).toHaveLength(0);
   });
 
   it('clears error when clearError is called', () => {
     store.clearError();
-    expect(store.error).toBeNull();
+    expect(store.error.value).toBeNull();
   });
 });

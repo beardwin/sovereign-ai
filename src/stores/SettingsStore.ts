@@ -1,6 +1,6 @@
 import type { Database } from '../db';
 import { eq } from 'drizzle-orm';
-import { signal } from '@preact/signals-react';
+import { signal, type Signal } from '@preact/signals-react';
 import type { Setting, NewSetting } from '../db/schema';
 import { settings } from '../db/schema';
 
@@ -11,16 +11,16 @@ export class SettingsStore {
 
   constructor(private readonly db: Database) {}
 
-  get settings() {
-    return this._settings.value;
+  get settings(): Signal<Setting | null> {
+    return this._settings;
   }
 
-  get loading() {
-    return this._loading.value;
+  get loading(): Signal<boolean> {
+    return this._loading;
   }
 
-  get error() {
-    return this._error.value;
+  get error(): Signal<string | null> {
+    return this._error;
   }
 
   async init(): Promise<Setting> {

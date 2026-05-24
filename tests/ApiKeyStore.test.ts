@@ -21,31 +21,31 @@ describe('ApiKeyStore', () => {
   });
 
   it('starts with empty keys', () => {
-    expect(store.keys).toEqual({});
+    expect(store.keys.value).toEqual({});
   });
 
   it('can save a key', async () => {
     await store.save('server-1', 'test-key');
-    expect(store.keys['server-1']).toBe('test-key');
+    expect(store.keys.value['server-1']).toBe('test-key');
   });
 
   it('can overwrite an existing key', async () => {
     await store.save('server-1', 'key-a');
     await store.save('server-1', 'key-b');
-    expect(store.keys['server-1']).toBe('key-b');
+    expect(store.keys.value['server-1']).toBe('key-b');
   });
 
   it('can delete a key', async () => {
     await store.save('server-1', 'test-key');
     await store.delete('server-1');
-    expect(store.keys['server-1']).toBeUndefined();
+    expect(store.keys.value['server-1']).toBeUndefined();
   });
 
   it('does not affect other keys when deleting', async () => {
     await store.save('server-1', 'key-1');
     await store.save('server-2', 'key-2');
     await store.delete('server-1');
-    expect(store.keys['server-2']).toBe('key-2');
-    expect(store.keys['server-1']).toBeUndefined();
+    expect(store.keys.value['server-2']).toBe('key-2');
+    expect(store.keys.value['server-1']).toBeUndefined();
   });
 });
